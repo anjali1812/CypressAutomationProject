@@ -1,0 +1,31 @@
+cypress\e2e\Login.cy.ts:
+    Login Test Suite -> 1. Login with correct username and password
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 2. Login with correct username and password and verify TOAST and Home Page Url
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 3. Login with incorrect username and password and verify login failure TOAST Message
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 4. Verify Email is required
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 5. Verify Password is required
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 6. Verify Email is valid Email Id
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 7. Password must be hidden
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 8. Password unhidden after click on Unhide
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 9. Logging without Email and Password . Verify Required on Email and Password
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+
+    Login Test Suite -> 10. Verify Password Constraints
+        cy:command (X): visit	https://svadhi.globalvoxprojects.com/
+

@@ -1,0 +1,461 @@
+cypress\e2e\SingleStudentReport.cy.ts:
+    Particular Student Reports test suite  -> 1. Verify Searched Student Report is opened
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	145
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=1
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 145 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=145
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='145']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/145
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/145
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='145']
+        cy:command (K): assert	expected **<span>** to be **visible**
+        cy:command (K): xpath	//*[normalize-space(text())='Student Id: 145' or normalize-space()='Student Id: 145']
+            cy:log (K): Pass : Found element with xpath [ //*[normalize-space(text())='Student Id: 145' or normalize-space()='Student Id: 145'] ]
+
+    Particular Student Reports test suite  -> 2. Verify All the tabs
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): wait	2000
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	434
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 434 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=434
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/434
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): xpath	//button[text()='Student Info' or @title='Student Info']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Student Info
+        cy:command (K): assert	expected **<button#simple-tab-0.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.Mui-selected.css-6uw572>** to be **visible**
+        cy:command (K): xpath	//button[text()='Student Info' or @title='Student Info']
+            cy:log (K): Pass : Found element with xpath [ //button[text()='Student Info' or @title='Student Info'] ]
+        cy:command (K): xpath	//button[text()='Academic Achivements' or @title='Academic Achivements']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Academic Achivements
+        cy:command (K): assert	expected **<button#simple-tab-1.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.Mui-selected.css-6uw572>** to be **visible**
+        cy:command (K): xpath	//button[text()='Academic Achivements' or @title='Academic Achivements']
+            cy:log (K): Pass : Found element with xpath [ //button[text()='Academic Achivements' or @title='Academic Achivements'] ]
+        cy:command (K): xpath	//button[text()='Holistic Development' or @title='Holistic Development']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Holistic Development
+        cy:command (K): assert	expected **<button#simple-tab-2.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.Mui-selected.css-6uw572>** to be **visible**
+        cy:command (K): xpath	//button[text()='Holistic Development' or @title='Holistic Development']
+            cy:log (K): Pass : Found element with xpath [ //button[text()='Holistic Development' or @title='Holistic Development'] ]
+        cy:command (K): xpath	//button[text()='Understanding your skills' or @title='Understanding your skills']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Understanding your skills
+        cy:command (K): assert	expected **<button#simple-tab-3.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.Mui-selected.css-6uw572>** to be **visible**
+        cy:command (K): xpath	//button[text()='Understanding your skills' or @title='Understanding your skills']
+            cy:log (K): Pass : Found element with xpath [ //button[text()='Understanding your skills' or @title='Understanding your skills'] ]
+        cy:command (K): xpath	//button[text()='Interpreting your skills' or @title='Interpreting your skills']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Interpreting your skills
+        cy:command (K): assert	expected **<button#simple-tab-4.MuiButtonBase-root.MuiTab-root.MuiTab-textColorPrimary.Mui-selected.css-6uw572>** to be **visible**
+        cy:command (K): xpath	//button[text()='Interpreting your skills' or @title='Interpreting your skills']
+            cy:log (K): Pass : Found element with xpath [ //button[text()='Interpreting your skills' or @title='Interpreting your skills'] ]
+
+    Particular Student Reports test suite  -> 3. Verify values in Student Info table
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): wait	2000
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=4
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=43
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 434 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=434
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/434
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): xpath	//button[text()='Student Info' or @title='Student Info']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Student Info
+        cy:command (K): assert	expected **[ <tr>, 13 more... ]** to be **visible**
+        cy:command (K): xpath	//table//tbody//tr
+            cy:log (K): Text of row : 0 is => GenderMaleAge-group18-20Household Income$100,000 - $150,000
+        cy:command (K): xpath	(//table//tbody//tr)[1]
+        cy:command (K): scrollIntoView
+            cy:log (K): Pass : [ Gende,Male ] found in row 1.
+
+    Particular Student Reports test suite  -> 4. Verify values in Academic Achivements>Performance Skills table
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=4
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 434 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=434
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/434
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): xpath	//button[text()='Academic Achivements' or @title='Academic Achivements']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Academic Achivements
+        cy:command (K): assert	expected **[ <tr>, 9 more... ]** to be **visible**
+        cy:command (K): xpath	//table//tbody//tr
+            cy:log (K): Text of row : 0 is => Grit 2.159
+        cy:command (K): xpath	(//table//tbody//tr)[1]
+        cy:command (K): scrollIntoView
+            cy:log (K): Pass : [ Grit,2.159 ] found in row 1.
+
+    Particular Student Reports test suite  -> 5. Verify values in Academic Achivements>Performance Skills Divison Table
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): wait	2000
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	434
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 434 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=434
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/434
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): xpath	//button[text()='Academic Achivements' or @title='Academic Achivements']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Academic Achivements
+        cy:command (K): assert	expected **<div.table-skill-container>** to be **visible**
+        cy:command (K): xpath	//*[text()='Performance Skills']/..//div[@class='table']//div[@class='table-skill-container'][1]
+            cy:log (K): Divison Text : Grit2.1597.893Consistency of Interest................8.29Perseverance of Efforts................7.50
+            cy:log (K): Pass : Values :  Grit,2.159,7.893 NOT found in section Performance Skills at given row number 1
+
+    Particular Student Reports test suite  -> 6. Verify values in Academic Achivements>Intellectual Skills table
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): wait	2000
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=4
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=43
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 434 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=434
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/434
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): xpath	//button[text()='Academic Achivements' or @title='Academic Achivements']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Academic Achivements
+        cy:command (K): assert	expected **[ <tr>, 9 more... ]** to be **visible**
+        cy:command (K): xpath	//table//tbody//tr
+            cy:log (K): Text of row : 0 is => Grit 2.159
+            cy:log (K): Text of row : 1 is => Adaptability 0.688
+            cy:log (K): Text of row : 2 is => Conscientiousness 0.024
+            cy:log (K): Text of row : 3 is => Collaboration 1.654
+            cy:log (K): Text of row : 4 is => Self Motivation 0.535
+            cy:log (K): Text of row : 5 is => Metacognition 0.624
+        cy:command (K): xpath	(//table//tbody//tr)[6]
+        cy:command (K): scrollIntoView
+            cy:log (K): Pass : [ Metacognition,0.624 ] found in row 6.
+
+    Particular Student Reports test suite  -> 7. Verify values in Academic Achivements>Intellectual Skills Divison Table
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//input[@placeholder='Student ID Search...']
+        cy:command (K): type	434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=4
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value 434 entered in Student ID Search... inputbox
+        cy:command (K): wait	2000
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/search?limit=15&page=0&identificationKey=434
+                        Status: 200
+        cy:command (K): xpath	//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score/434
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/userreport/434
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//div[contains(@class,'user_card')]//p[text()='434']
+        cy:command (K): xpath	//button[text()='Academic Achivements' or @title='Academic Achivements']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Academic Achivements
+        cy:command (K): assert	expected **<div.table-skill-container>** to be **visible**
+        cy:command (K): xpath	//*[text()='Intellectual Skills']/..//div[@class='table']//div[@class='table-skill-container'][1]
+            cy:log (K): Divison Text : Metacognition0.6246.75Awareness and Understanding of one's own thought process................7.50Self Regulated Learning................6.00
+            cy:log (K): Pass : Values : Metacognition,0.624,6.75 NOT found in section Intellectual Skills at given row number 1
+

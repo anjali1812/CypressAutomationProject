@@ -1,0 +1,264 @@
+cypress\e2e\Login.cy.ts:
+    Login Test Suite -> 1. Login with correct username and password
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a[.='Logout']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/
+        cy:command (K): wait	500
+            cy:log (K): Pass : Clicked on Logout
+            cy:log (K): Pass : Logged out successfully
+
+    Login Test Suite -> 2. Login with correct username and password and verify TOAST and Home Page Url
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): get	.Toastify
+            cy:log (K): Toast Text : user login successfully
+            cy:log (K): Pass : Toast message [ user login successfully ] verified successfully.
+        cy:command (K): xpath	//a[.='Logout']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/
+        cy:command (K): wait	500
+            cy:log (K): Pass : Clicked on Logout
+            cy:log (K): Pass : Logged out successfully
+
+    Login Test Suite -> 3. Login with incorrect username and password and verify login failure TOAST Message
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): get	.Toastify
+            cy:log (K): Toast Text : user login successfully
+            cy:log (K): Error : Toast message [ login wrong credentials ] not verified successfully.
+        cy:command (X): get	Error : Please check last error in the log for reference...
+
+    Login Test Suite -> 4. Verify Email is required
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): tab
+        cy:command (X): get	/*[normalize-space(text())='Required' or normalize-space()='Required']
+
+    Login Test Suite -> 5. Verify Password is required
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): tab
+        cy:command (X): get	/*[normalize-space(text())='Required' or normalize-space()='Required']
+
+    Login Test Suite -> 6. Verify Email is valid Email Id
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): tab
+        cy:command (K): assert	expected **<p#:r0:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.MuiFormHelperText-filled.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//*[normalize-space(text())='Must be a valid email' or normalize-space()='Must be a valid email']
+            cy:log (K): Pass : Found element with xpath [ //*[normalize-space(text())='Must be a valid email' or normalize-space()='Must be a valid email'] ]
+
+    Login Test Suite -> 7. Password must be hidden
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): assert	expected **<input#:r1:.MuiOutlinedInput-input.MuiInputBase-input.MuiInputBase-inputAdornedEnd.css-1uvydh2>** to be **visible**
+        cy:command (K): xpath	//input[@name='password' and @type='password']
+            cy:log (K): Pass : Found element with xpath [ //input[@name='password' and @type='password'] ]
+
+    Login Test Suite -> 8. Password unhidden after click on Unhide
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (X): assert	expected **//input[@name='password' and @type='text']** to be **visible**
+
+    Login Test Suite -> 9. Logging without Email and Password . Verify Required on Email and Password
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): assert	expected **<p#:r0:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.Mui-focused.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//label[text()='Email']//../p[text()='Required']
+            cy:log (K): Pass : Found element with xpath [ //label[text()='Email']//../p[text()='Required'] ]
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): assert	expected **<p#:r1:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.Mui-focused.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//label[text()='Password']//../p[text()='Required']
+            cy:log (K): Pass : Found element with xpath [ //label[text()='Password']//../p[text()='Required'] ]
+
+    Login Test Suite -> 10. Verify Password Constraints
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	anjali
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value anjali entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): assert	expected **<p#:r1:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.MuiFormHelperText-filled.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character']
+            cy:log (K): Pass : Found element with xpath [ //*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character'] ]
+        cy:command (K): reload
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Anjali
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Anjali entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): assert	expected **<p#:r1:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.MuiFormHelperText-filled.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character']
+            cy:log (K): Pass : Found element with xpath [ //*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character'] ]
+        cy:command (K): reload
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Anj@li
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Anj@li entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): assert	expected **<p#:r1:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.MuiFormHelperText-filled.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character']
+            cy:log (K): Pass : Found element with xpath [ //*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character'] ]
+        cy:command (K): reload
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Anj@li1
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Anj@li1 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Login
+        cy:command (K): assert	expected **<p#:r1:-helper-text.MuiFormHelperText-root.MuiFormHelperText-sizeMedium.MuiFormHelperText-contained.MuiFormHelperText-filled.Mui-required.css-v7esy>** to be **visible**
+        cy:command (K): xpath	//*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character']
+            cy:log (K): Pass : Found element with xpath [ //*[normalize-space(text())='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character' or normalize-space()='Minimum 8 Characters, at least 1 Uppercase letter, at least 1 Lowercase letter, at least 1 Number and at least 1 Special Character'] ]
+

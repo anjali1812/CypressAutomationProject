@@ -1,0 +1,55 @@
+cypress\e2e\StudentReports.cy.ts:
+    Student Reports test suite -> 12. Download report of Multiple students
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): click
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys/Character%20Skill%20Assesment%20Score
+         cons:warn (!): (react-paginate): The forcePage prop provided is greater than the maximum page index from pageCount prop (0 > -1).
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/student?limit=15&page=0
+                        Status: 200
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on xpath//a//p[text()='Character Skill Assesment Score']
+        cy:command (K): wait	5000
+        cy:command (K): xpath	//p[text()='434']/..//following-sibling::button[@title='Download']
+        cy:command (K): click
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/generate/pdf/434
+                        Status: 200
+        cy:command (K): xpath	//p[text()='359']/..//following-sibling::button[@title='Download']
+        cy:command (K): click
+        cy:command (K): xpath	//p[text()='128']/..//following-sibling::button[@title='Download']
+        cy:command (K): click
+        cy:command (K): xpath	//p[text()='102']/..//following-sibling::button[@title='Download']
+        cy:command (K): click
+        cy:command (K): xpath	//p[text()='189']/..//following-sibling::button[@title='Download']
+        cy:command (K): click
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/generate/pdf/359
+                        Status: 200
+        cy:command (X): task	waitForMultipleFilesToDownload, C:\AnjaliParmar\CharaterARCAutomation\results\D_2023-5-10_T_11-51-38\downloads
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/generate/pdf/128
+                        Status: 200
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/generate/pdf/102
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/generate/pdf/189
+

@@ -1,0 +1,105 @@
+cypress\e2e\Sync.cy.ts:
+    Sync test suite -> 1. Sync Inproccess TOAST
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//button[text()='Sync' or @title='Sync']
+        cy:command (K): click
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/sync
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Sync
+        cy:command (K): get	.Toastify
+            cy:log (K): Toast Text : Please wait while we fetching data
+            cy:log (K): Pass : Toast message [ Please wait while we fetching data ] verified successfully.
+
+    Sync test suite -> 2. Sync In Progress Button
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): wait	2000
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//button[text()='Sync' or @title='Sync']
+        cy:command (K): click
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/sync
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Sync
+        cy:command (K): assert	expected **<button#syncData.btn.btn-light.nav-link.text-dark.px-3>** to be **visible**
+        cy:command (K): xpath	//button[@disabled and text()='Syncing...']
+            cy:log (K): Pass : Found element with xpath [ //button[@disabled and text()='Syncing...'] ]
+
+    Sync test suite -> 3. Sync Proccessed TOAST
+        cy:command (K): visit	https://svadhi.globalvoxprojects.com/
+            cy:log (K): Pass : Launched https://svadhi.globalvoxprojects.com/
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Email')]//following::input[1]
+        cy:command (K): type	svadhi@admin.com
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value svadhi@admin.com entered in Email inputbox
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): clear
+        cy:command (K): wait	500
+        cy:command (K): xpath	//label[contains(text(),'Password')]//following::input[1]
+        cy:command (K): type	Admin@1234
+        cy:command (K): wait	100
+            cy:log (K): Pass : Value Admin@1234 entered in Password inputbox
+        cy:command (K): xpath	//button[text()='Login' or @title='Login']
+        cy:command (K): click
+        cy:command (K): wait	2000
+            cy:xhr (K): POST https://svadhi-api.globalvoxprojects.com/v1/user/login
+                        Status: 200
+        cy:command (K): new url	https://svadhi.globalvoxprojects.com/surveys
+            cy:log (K): Pass : Clicked on Login
+            cy:log (K): Pass : svadhi@admin.com logged in successfully
+        cy:command (K): xpath	//button[text()='Sync' or @title='Sync']
+        cy:command (K): click
+            cy:xhr (K): GET https://svadhi-api.globalvoxprojects.com/v1/survey/sync
+                        Status: 201
+        cy:command (K): wait	2000
+            cy:log (K): Pass : Clicked on Sync
+        cy:command (K): wait	8000
+        cy:command (K): get	.Toastify
+            cy:log (K): Toast Text : Scored generated
+            cy:log (K): Pass : Toast message [ Scored generated ] verified successfully.
+
